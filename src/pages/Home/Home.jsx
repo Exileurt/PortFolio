@@ -1,6 +1,24 @@
 import Menu from './Menu';
+import {useRef, useLayoutEffect} from 'react';
+import {gsap} from 'gsap';
+import {TextPlugin} from 'gsap/TextPlugin';
+gsap.registerPlugin(TextPlugin);
 
-const home = () => {
+const Home = () => {
+  const boxRef = useRef();
+
+  useLayoutEffect(() => {
+    console.log(boxRef);
+    gsap.to(boxRef.current, {
+      duration: 3,
+      text: `EX-MILITARY, I&apos;M A DEVELOPER WHO IS PASSIONATE ABOUT BUILDING
+      BEAUTIFUL, FUNCTIONAL, AND EASY-TO-USE AND NAVIGATE WEBSITES AND
+      APPLICATIONS WITH A STRONG EMPHASIS ON RIGOR.`,
+    });
+
+    return () => {};
+  }, []);
+
   return (
     <div>
       <Menu />
@@ -11,10 +29,13 @@ const home = () => {
             <br />
             FAVREL
           </h1>
-          <p className="max-w-lg text-lg leading-4 text-soft-yellow">
-            EX-MILITARY, I&apos;M A DEVELOPER WHO IS PASSIONATE ABOUT BUILDING
-            BEAUTIFUL, FUNCTIONAL, AND EASY-TO-USE AND NAVIGATE WEBSITES AND
-            APPLICATIONS WITH A STRONG EMPHASIS ON RIGOR.
+          <p
+            className="max-w-lg text-lg leading-4 text-soft-yellow"
+            ref={boxRef}
+          >
+            YRETILIM-XE , I A M RELOPEVED OWH SI ENIOTSAP TUOB GNIDLIUB .
+            LUFITUAEB , LANOITCNUF , DNA ESAE-OT-ESU DNA ETAGIVAN STESBEW DNA
+            .SNOITCILPPA HTIW A GNORTS SIHPSAME NO RIGOR.
           </p>
         </div>
       </div>
@@ -30,4 +51,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
