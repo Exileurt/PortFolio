@@ -8,15 +8,15 @@ const Home = () => {
   const boxRef = useRef();
 
   useLayoutEffect(() => {
-    console.log(boxRef);
-    gsap.to(boxRef.current, {
-      duration: 3,
+    const tl = gsap.timeline();
+    tl.to(boxRef.current, {duration: 1, opacity: 0, repeat: 2, yoyo: true});
+    tl.to(boxRef.current, {
+      opacity: 100,
+      duration: 6,
       text: `EX-MILITARY, I&apos;M A DEVELOPER WHO IS PASSIONATE ABOUT BUILDING
       BEAUTIFUL, FUNCTIONAL, AND EASY-TO-USE AND NAVIGATE WEBSITES AND
       APPLICATIONS WITH A STRONG EMPHASIS ON RIGOR.`,
     });
-
-    return () => {};
   }, []);
 
   return (
@@ -33,9 +33,7 @@ const Home = () => {
             className="max-w-lg text-lg leading-4 text-soft-yellow"
             ref={boxRef}
           >
-            YRETILIM-XE , I A M RELOPEVED OWH SI ENIOTSAP TUOB GNIDLIUB .
-            LUFITUAEB , LANOITCNUF , DNA ESAE-OT-ESU DNA ETAGIVAN STESBEW DNA
-            .SNOITCILPPA HTIW A GNORTS SIHPSAME NO RIGOR.
+            LOADING...
           </p>
         </div>
       </div>

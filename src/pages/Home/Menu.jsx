@@ -59,7 +59,7 @@ const Menu = () => {
       {menuIsOpen && (
         <div
           id="menu"
-          className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-50"
+          className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-40"
         >
           <button onClick={handleMenuToggle}>
             <img
