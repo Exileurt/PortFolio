@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import RouterPages from './pages/RouterPages';
 import ScrollDriven from './components/scrollDriven/scrollDriven';
-import Cursor from './components/Cursor/Cursor';
+import Cursor from './components/Cursor/cursor.jsx';
 
 const App = () => {
   return (

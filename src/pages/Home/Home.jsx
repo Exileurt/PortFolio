@@ -5,8 +5,6 @@ import {TextPlugin} from 'gsap/TextPlugin';
 gsap.registerPlugin(TextPlugin);
 
 const Home = () => {
-  const cursorHover = useRef();
-
   //TEXT ANIMATION
   const boxRef = useRef();
   useLayoutEffect(() => {
@@ -33,10 +31,7 @@ const Home = () => {
 
       <div className="flex flex-col">
         <div className="h-screen flex flex-col justify-center pl-36 select-none">
-          <h1
-            id={cursorHover}
-            className="font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text"
-          >
+          <h1 className="font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text">
             AURELIEN
             <br />
             FAVREL
