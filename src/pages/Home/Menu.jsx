@@ -39,7 +39,7 @@ const Menu = () => {
     }
   }, [animationMenuIsOpen]);
 
-  //On enter
+  //On enter-leave
   const onEnter = ({currentTarget}) => {
     gsap.to(currentTarget, {color: '#FFCA16'});
   };
@@ -50,7 +50,7 @@ const Menu = () => {
   return (
     <div className="relative">
       <button
-        className="absolute top-12 right-12 flex items-center "
+        className="absolute top-12 right-12 flex items-center"
         onClick={handleMenuToggle}
       >
         <img src={hamburger} alt="hamburger" className="w-8" />
@@ -59,7 +59,7 @@ const Menu = () => {
       {menuIsOpen && (
         <div
           id="menu"
-          className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-40"
+          className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-50"
         >
           <button onClick={handleMenuToggle}>
             <img
@@ -73,13 +73,19 @@ const Menu = () => {
           <nav className="flex text-white text-9xl font-semibold">
             <ul className="-space-y-5 ">
               <li id="about" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink to="#">ABOUT</NavLink>
+                <NavLink to="/" onClick={handleMenuToggle}>
+                  ABOUT
+                </NavLink>
               </li>
               <li id="project" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink to="#">PROJECT</NavLink>
+                <NavLink to="/" onClick={handleMenuToggle}>
+                  PROJECT
+                </NavLink>
               </li>
               <li id="linkedin" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink to="#">LINKEDIN</NavLink>
+                <NavLink to="/" onClick={handleMenuToggle}>
+                  LINKEDIN
+                </NavLink>
               </li>
             </ul>
           </nav>
