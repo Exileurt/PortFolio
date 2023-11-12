@@ -1,8 +1,6 @@
 import {NavLink} from 'react-router-dom';
-import {useContext, useState, useEffect} from 'react';
+import {useContext, useState, useLayoutEffect} from 'react';
 import gsap from 'gsap';
-import hamburger from '../../assets/hamburger.svg';
-import cross from '../../assets/cross.svg';
 import {CursorContext} from '../../components/Cursor/cursor';
 
 const Menu = () => {
@@ -24,23 +22,29 @@ const Menu = () => {
   };
 
   //Background-text transition
-  useEffect(() => {
-    let tl = gsap.timeline({paused: true});
-    tl.fromTo('#menu', {y: -2000}, {y: 0, ease: 'power1.out', duration: 0.4});
-    tl.fromTo('#about', {x: 2000}, {x: 0, ease: 'power1.out', duration: 0.2});
-    tl.fromTo('#project', {x: 2000}, {x: 0, ease: 'power1.out', duration: 0.2});
-    tl.fromTo(
-      '#linkedin',
-      {x: 2000},
-      {x: 0, ease: 'power1.out', duration: 0.2}
-    );
-    if (animationMenuIsOpen) {
-      tl.play();
-    } else {
-      tl.reverse(2);
-      gsap.to('#cross', {rotation: -90, duration: 0.5});
+  useLayoutEffect(() => {
+    if (menuIsOpen) {
+      let tl = gsap.timeline({paused: true});
+      tl.fromTo('#menu', {y: -2000}, {y: 0, ease: 'power1.out', duration: 0.4});
+      tl.fromTo('#about', {x: 2000}, {x: 0, ease: 'power1.out', duration: 0.2});
+      tl.fromTo(
+        '#project',
+        {x: 2000},
+        {x: 0, ease: 'power1.out', duration: 0.2}
+      );
+      tl.fromTo(
+        '#linkedin',
+        {x: 2000},
+        {x: 0, ease: 'power1.out', duration: 0.2}
+      );
+      if (animationMenuIsOpen) {
+        tl.play();
+      } else if (!menuIsOpen) {
+        tl.reverse(2);
+        gsap.to('#cross', {rotation: -90, duration: 0.5});
+      }
     }
-  }, [animationMenuIsOpen]);
+  }, [menuIsOpen, animationMenuIsOpen]);
 
   //On enter-leave
   const onEnter = ({currentTarget}) => {
@@ -50,8 +54,6 @@ const Menu = () => {
     gsap.to(currentTarget, {color: 'white'});
   };
 
-  //Cursor
-
   return (
     <div className="relative">
       <button
@@ -60,7 +62,35 @@ const Menu = () => {
         onMouseEnter={onEnterCursor}
         onMouseLeave={onLeaveCursor}
       >
-        <img src={hamburger} alt="hamburger" className="w-8" />
+        <svg
+          className="w-10 h-10 transition-all duration-300 ease-in-out stroke-[#3F2700] hover:stroke-amber-400 hover:scale-110"
+          viewBox="0 0 23 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            y1="-1.5"
+            x2="23"
+            y2="-1.5"
+            transform="matrix(-1 0 0 1 23 3)"
+            stroke="0"
+            strokeWidth="3"
+          />
+          <line
+            y1="-1.5"
+            x2="23"
+            y2="-1.5"
+            transform="matrix(-1 0 0 1 23 17)"
+            strokeWidth="3"
+          />
+          <line
+            y1="-1.5"
+            x2="23"
+            y2="-1.5"
+            transform="matrix(-1 0 0 1 23 10)"
+            strokeWidth="3"
+          />
+        </svg>
       </button>
 
       {menuIsOpen && (
@@ -73,28 +103,50 @@ const Menu = () => {
             onMouseLeave={onLeaveCursor}
             onClick={handleMenuToggle}
           >
-            <img
-              id="cross"
-              src={cross}
-              alt="cross"
-              className="absolute w-8 h-8 top-12 right-12"
-            />
+            <svg
+              className="absolute w-8 h-8 top-12 right-12 ease-in transition-all hover:scale-125"
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M46.6801 0L25 21.6902L3.3199 0L0 3.29969L21.6914 25.0004L0 46.7018L3.3199 50L25 28.3105L46.6801 50L50 46.7018L28.3086 25.0004L50 3.29969L46.6801 0Z"
+                fill="white"
+              />
+            </svg>
           </button>
 
-          <nav className="flex text-white text-9xl font-semibold">
+          <nav className="flex text-white text-9xl font-semibold select-none">
             <ul className="-space-y-5 ">
               <li id="about" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink to="/" onClick={handleMenuToggle}>
+                <NavLink
+                  to="/"
+                  onClick={handleMenuToggle}
+                  onMouseEnter={onEnterCursor}
+                  onMouseLeave={onLeaveCursor}
+                >
                   ABOUT
                 </NavLink>
               </li>
               <li id="project" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink to="/" onClick={handleMenuToggle}>
+                <NavLink
+                  to="/"
+                  onClick={handleMenuToggle}
+                  onMouseEnter={onEnterCursor}
+                  onMouseLeave={onLeaveCursor}
+                >
                   PROJECT
                 </NavLink>
               </li>
               <li id="linkedin" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink to="/" onClick={handleMenuToggle}>
+                <NavLink
+                  to="/"
+                  onClick={handleMenuToggle}
+                  onMouseEnter={onEnterCursor}
+                  onMouseLeave={onLeaveCursor}
+                >
                   LINKEDIN
                 </NavLink>
               </li>
