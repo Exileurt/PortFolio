@@ -1,7 +1,10 @@
-import {useRef, useLayoutEffect} from 'react';
+import {createContext, useRef, useLayoutEffect} from 'react';
+import PropTypes from 'prop-types';
 import {gsap} from 'gsap';
 
-const Cursor = () => {
+export const CursorContext = createContext();
+
+const CursorProvider = ({children}) => {
   const cursor = useRef();
   useLayoutEffect(() => {
     gsap.set(cursor.current, {xPercent: -50, yPercent: -50});
@@ -18,7 +21,6 @@ const Cursor = () => {
       yTo(e.clientY);
     });
   }, []);
-
   const cursorOut = useRef();
   useLayoutEffect(() => {
     gsap.set(cursorOut.current, {xPercent: -50, yPercent: -50});
@@ -36,20 +38,45 @@ const Cursor = () => {
     });
   }, []);
 
+  const onEnterCursor = () => {
+    gsap.to(cursor.current, {
+      scale: 2,
+      border: 1,
+      borderColor: 'white',
+      backgroundColor: 'transparent',
+    });
+    gsap.to(cursorOut.current, {scale: 2, borderColor: 'white'});
+  };
+  const onLeaveCursor = () => {
+    gsap.to(cursor.current, {
+      scale: 1,
+      border: 0,
+      backgroundColor: '#FFCA16',
+    });
+    gsap.to(cursorOut.current, {scale: 1, borderColor: '#FFCA16'});
+  };
+
   return (
-    <div>
-      <div
-        ref={cursor}
-        className="fixed w-2 h-2  bg-amber-400 rounded-full z-50
-        pointer-events-none"
-      />
-      <div
-        ref={cursorOut}
-        className="fixed w-7 h-7 border border-amber-400 rounded-full z-50
-        pointer-events-none"
-      />
-    </div>
+    <CursorContext.Provider
+      value={{cursor, cursorOut, onEnterCursor, onLeaveCursor}}
+    >
+      {children}
+      <div>
+        <div
+          ref={cursor}
+          className="fixed w-2 h-2 top-0 left-0 bg-amber-400 rounded-full z-50 pointer-events-none"
+        />
+        <div
+          ref={cursorOut}
+          className="fixed w-7 h-7 top-0 left-0 border border-amber-400 rounded-full z-50 pointer-events-none"
+        />
+      </div>
+    </CursorContext.Provider>
   );
 };
 
-export default Cursor;
+CursorProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+export default CursorProvider;

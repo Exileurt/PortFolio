@@ -1,10 +1,13 @@
 import Menu from './Menu';
-import {useRef, useLayoutEffect} from 'react';
+import {useContext, useRef, useLayoutEffect} from 'react';
 import {gsap} from 'gsap';
 import {TextPlugin} from 'gsap/TextPlugin';
+import {CursorContext} from '../../components/Cursor/Cursor';
 gsap.registerPlugin(TextPlugin);
 
 const Home = () => {
+  7;
+
   //TEXT ANIMATION
   const boxRef = useRef();
   useLayoutEffect(() => {
@@ -24,6 +27,8 @@ const Home = () => {
       APPLICATIONS WITH A STRONG EMPHASIS ON RIGOR.`,
     });
   }, []);
+  //CURSOR
+  const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
 
   return (
     <div>
@@ -31,13 +36,24 @@ const Home = () => {
 
       <div className="flex flex-col">
         <div className="h-screen flex flex-col justify-center pl-36 select-none">
-          <h1 className="font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text">
+          <h1
+            className="max-w-3xl font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text "
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+          >
             AURELIEN
-            <br />
+          </h1>
+          <h1
+            className="max-w-xl font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text "
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+          >
             FAVREL
           </h1>
           <p
             className="max-w-lg text-lg leading-4 text-soft-yellow"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
             ref={boxRef}
           >
             LOADING...
