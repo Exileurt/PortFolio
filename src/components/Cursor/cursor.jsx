@@ -6,7 +6,20 @@ export const CursorContext = createContext();
 
 const CursorProvider = ({children}) => {
   const cursor = useRef();
+
   useLayoutEffect(() => {
+    const handleMouseDown = () => {
+      gsap.to(cursorOut.current, {
+        scale: 2,
+        ease: 'ease',
+      });
+    };
+    const handleMouseUp = () => {
+      gsap.to(cursorOut.current, {
+        scale: 1,
+        ease: 'ease',
+      });
+    };
     gsap.set(cursor.current, {xPercent: -50, yPercent: -50});
     let xTo = gsap.quickTo(cursor.current, 'x', {
       duration: 0.1,
@@ -20,6 +33,8 @@ const CursorProvider = ({children}) => {
       xTo(e.clientX);
       yTo(e.clientY);
     });
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
   }, []);
   const cursorOut = useRef();
   useLayoutEffect(() => {
@@ -41,16 +56,20 @@ const CursorProvider = ({children}) => {
   const onEnterCursor = () => {
     gsap.to(cursor.current, {
       scale: 2,
-      border: 1,
+      borderWidth: 1,
       borderColor: 'white',
       backgroundColor: 'transparent',
     });
-    gsap.to(cursorOut.current, {scale: 2, borderColor: 'white'});
+    gsap.to(cursorOut.current, {
+      scale: 2,
+      borderWidth: 2,
+      borderColor: 'white',
+    });
   };
   const onLeaveCursor = () => {
     gsap.to(cursor.current, {
       scale: 1,
-      border: 0,
+      borderWidth: 0,
       backgroundColor: '#FFCA16',
     });
     gsap.to(cursorOut.current, {scale: 1, borderColor: '#FFCA16'});
