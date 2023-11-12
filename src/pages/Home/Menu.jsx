@@ -1,13 +1,16 @@
 import {NavLink} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import gsap from 'gsap';
 import hamburger from '../../assets/hamburger.svg';
 import cross from '../../assets/cross.svg';
+import {CursorContext} from '../../components/Cursor/Cursor';
 
 const Menu = () => {
+  const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [animationMenuIsOpen, setAnimationMenuIsOpen] = useState(false);
 
+  //Handle Menu
   const handleMenuToggle = () => {
     if (menuIsOpen) {
       setAnimationMenuIsOpen(false);
@@ -47,11 +50,15 @@ const Menu = () => {
     gsap.to(currentTarget, {color: 'white'});
   };
 
+  //Cursor
+
   return (
     <div className="relative">
       <button
         className="absolute top-12 right-12 flex items-center"
         onClick={handleMenuToggle}
+        onMouseEnter={onEnterCursor}
+        onMouseLeave={onLeaveCursor}
       >
         <img src={hamburger} alt="hamburger" className="w-8" />
       </button>
@@ -61,7 +68,11 @@ const Menu = () => {
           id="menu"
           className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-40"
         >
-          <button onClick={handleMenuToggle}>
+          <button
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+            onClick={handleMenuToggle}
+          >
             <img
               id="cross"
               src={cross}
