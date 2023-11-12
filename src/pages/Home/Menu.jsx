@@ -3,7 +3,7 @@ import {useContext, useState, useEffect} from 'react';
 import gsap from 'gsap';
 import hamburger from '../../assets/hamburger.svg';
 import cross from '../../assets/cross.svg';
-import {CursorContext} from '../../components/Cursor/Cursor';
+import {CursorContext} from '../../components/Cursor/cursor';
 
 const Menu = () => {
   const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
