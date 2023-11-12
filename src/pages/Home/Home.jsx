@@ -2,7 +2,7 @@ import Menu from './Menu';
 import {useContext, useRef, useLayoutEffect} from 'react';
 import {gsap} from 'gsap';
 import {TextPlugin} from 'gsap/TextPlugin';
-import {CursorContext} from '../../components/Cursor/Cursor';
+import {CursorContext} from '../../components/Cursor/cursor';
 gsap.registerPlugin(TextPlugin);
 
 const Home = () => {
