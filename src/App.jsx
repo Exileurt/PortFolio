@@ -1,6 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import RouterPages from './pages/RouterPages';
-import ScrollDriven from './components/scrollDriven/scrollDriven';
 import CursorProvider from './components/Cursor/cursor.jsx';
 
 const App = () => {
@@ -8,7 +7,6 @@ const App = () => {
     <div className="h-screen bg-gradient-to-r from-very-dark-yellow to-black">
       <CursorProvider>
         <Router>
-          <ScrollDriven />
           <Routes>
             <Route path="/*" element={<RouterPages />} />
           </Routes>
