@@ -7,6 +7,9 @@ export default {
         'dark-yellow': '#3F2700',
         'soft-yellow': '#714F19',
       },
+      backgroundImage: {
+        darkForest: "url('/src/assets/darkforest.png')",
+      },
     },
   },
   plugins: [],
