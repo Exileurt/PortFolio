@@ -16,12 +16,12 @@ const Hero = () => {
   const boxRef = useRef();
   useLayoutEffect(() => {
     const tl = gsap.timeline();
-    tl.timeScale(1);
-    tl.to(boxRef.current, {
-      duration: 0.5,
-      opacity: 0.3,
-      repeat: 2,
-      yoyo: false,
+    gsap.to('.bounce', {
+      duration: 2,
+      y: 80,
+      ease: 'bounce.out',
+      repeat: -1,
+      yoyo: true,
     });
     tl.to(boxRef.current, {
       opacity: 100,
@@ -34,9 +34,27 @@ const Hero = () => {
   //SCROLL TRIGGER
   useLayoutEffect(() => {
     gsap.to('.textHero', {
+      ease: 'power1.out',
       width: 0,
       scrollTrigger: {scrub: true, start: 'top', end: 'center'},
     }),
+      gsap.to('.scrollDown', {
+        x: 300,
+        ease: 'power1.out',
+        scrollTrigger: {
+          scrub: true,
+          start: 'top',
+          end: 'center',
+        },
+      }),
+      gsap.to('.scrollDown', {
+        visibility: 'hidden',
+        scrollTrigger: {
+          scrub: true,
+          start: 'center',
+          end: 'center',
+        },
+      }),
       gsap.to('.textHero', {
         visibility: 'hidden',
         scrollTrigger: {
@@ -64,7 +82,7 @@ const Hero = () => {
               AURELIEN
             </h1>
             <h1
-              className="max-w-xl font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text "
+              className="max-w-xl font-semibold text-9xl tracking-[19px] bg-gradient-to-r from-amber-500  to-amber-400 text-transparent bg-clip-text"
               onMouseEnter={onEnterCursor}
               onMouseLeave={onLeaveCursor}
             >
@@ -75,18 +93,15 @@ const Hero = () => {
               onMouseEnter={onEnterCursor}
               onMouseLeave={onLeaveCursor}
               ref={boxRef}
-            >
-              LOADING...
-            </p>
+            ></p>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-28 right-28 flex items-end text-soft-yellow">
+      <div className="scrollDown fixed bottom-28 right-28 flex items-end text-soft-yellow">
         <p className="pr-8 leading-3">scroll down</p>
         <div className="flex flex-col items-center">
-          <div className="h-40 w-px bg-soft-yellow" />
-          <div className="absolute bottom-0 h-3 w-3 bg-soft-yellow rotate-45" />
+          <div className="bounce absolute bottom-20 h-3 w-3 bg-soft-yellow rotate-45" />
         </div>
       </div>
     </div>
