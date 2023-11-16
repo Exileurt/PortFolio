@@ -1,5 +1,5 @@
 import Hero from './Hero';
-import About from './About';
+import PanelOne from './PanelOne';
 import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/all';
 import {useLayoutEffect} from 'react';
@@ -13,10 +13,10 @@ const Menu = () => {
       scrollTrigger: {scrub: true, start: 'center-=300'},
     });
   }, []);
-  console.log(About);
+
   return (
     <div>
-      <About />
+      <PanelOne />
       <Hero />
 
       <div className="flex justify-center h-screen bg-gradient-to-r from-very-dark-yellow to-black"></div>
