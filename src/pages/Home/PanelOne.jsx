@@ -54,34 +54,49 @@ const About = () => {
       visibility: 'hidden',
       scrollTrigger: {scrub: true, start: 'top', end: 'center+=90'},
     });
-    tl.to('.textPanelOne', {
-      visibility: 'visible',
-      ease: 'power1.out',
-      borderRightWidth: 4,
-      width: '100%',
-      scrollTrigger: {scrub: true, start: 'center+=100', end: 'bottom+=250'},
-    });
+    tl.fromTo(
+      '.textPanelOne',
+      {width: 0},
+      {
+        visibility: 'visible',
+        ease: 'power1.out',
+        borderRightWidth: 4,
+        width: '100%',
+
+        scrollTrigger: {scrub: true, start: 'center+=100', end: 'bottom+=250'},
+      }
+    );
     tl.to('.textPanelOne', {
       borderRightWidth: 0,
+      immediateRender: false,
       scrollTrigger: {scrub: true, start: 'bottom+=200', end: 'bottom+=250'},
     });
-    tl.to('.textPanelOne', {
-      height: 0,
-      scrollTrigger: {scrub: true, start: 'bottom+=260', end: 'bottom+=400'},
-    });
+
+    tl.fromTo(
+      '.textPanelOne',
+      {
+        width: '100%',
+      },
+      {
+        width: 0,
+        scrollTrigger: {scrub: true, start: 'bottom+=260', end: 'bottom+=300'},
+      }
+    );
     tl.fromTo(
       '.darkForest',
       {
-        height: '100vh',
+        width: '100%',
       },
       {
-        height: 0,
-        scrollTrigger: {scrub: true, start: 'bottom+=260', end: 'bottom+=400'},
+        visibility: 'visible',
+        width: 0,
+        immediateRender: false,
+        scrollTrigger: {scrub: true, start: 'bottom+=300', end: 'bottom+=450'},
       }
     );
     tl.to('.darkForest', {
       visibility: 'hidden',
-      scrollTrigger: {scrub: true, start: 'bottom+=399', end: 'bottom+=400'},
+      scrollTrigger: {scrub: true, start: 'bottom+=455', end: 'bottom+=456'},
     });
   });
 
