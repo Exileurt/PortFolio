@@ -19,48 +19,25 @@ const PanelTwo = () => {
       scrollTrigger: {
         scrub: true,
         start: 'bottom+=200',
-        end: 'bottom+=1600',
+        end: 'bottom+=500',
       },
     });
-    tl.to('.bouncePanelTwo', {
-      duration: 2,
-      x: 80,
-      ease: 'bounce.out',
-      repeat: -1,
-      yoyo: true,
+    tl.to('.imgOne', {
+      x: -600,
+      scrollTrigger: {scrub: true, start: 'bottom+=800', end: 'bottom+=1000'},
     });
   });
 
   return (
-    <div className="panelTwo hidden fixed flex-col justify-center items-center text-center top-0 left-0 h-screen w-full bg-gradient-to-r from-very-dark-yellow to-black">
-      <h2 className="text-6xl font-bold text-amber-400 pb-12">PROJECT</h2>
-
-      <div className="flex flex-wrap gap-6 justify-center max-w-6xl">
+    <div className="panelTwo hidden fixed justify-center items-center flex-col text-center top-0 left-0 h-screen w-full bg-gradient-to-r">
+      <h2 className="text-6xl font-bold text-amber-400 pb-12">
+        DIFFERENT STYLE OF WEBSITE
+      </h2>
+      <div className="fixed left-96 flex justify-center">
         <img
           src={armenian}
           alt="armenian"
-          className="w-1/3 h-auto border-2 border-amber-400 opacity-50 transition-all ease-in hover:scale-150  hover:opacity-100"
-          onMouseEnter={onEnterCursor}
-          onMouseLeave={onLeaveCursor}
-        />
-        <img
-          src={armenian}
-          alt="armenian"
-          className="w-1/3 h-auto border-2 border-amber-400 opacity-50"
-          onMouseEnter={onEnterCursor}
-          onMouseLeave={onLeaveCursor}
-        />
-        <img
-          src={armenian}
-          alt="armenian"
-          className="w-1/3 h-auto border-2 border-amber-400 opacity-50"
-          onMouseEnter={onEnterCursor}
-          onMouseLeave={onLeaveCursor}
-        />
-        <img
-          src={armenian}
-          alt="armenian"
-          className="w-1/3 h-auto border-2 border-amber-400 opacity-50"
+          className="imgOne hidden w-1/2 h-auto border-2 border-amber-400"
           onMouseEnter={onEnterCursor}
           onMouseLeave={onLeaveCursor}
         />
