@@ -1,8 +1,6 @@
 import gsap from 'gsap';
-import {ScrollTrigger} from 'gsap/all';
-import {useLayoutEffect} from 'react';
-import {TextPlugin} from 'gsap/all';
-import {useContext} from 'react';
+import {ScrollTrigger, TextPlugin} from 'gsap/all';
+import {useLayoutEffect, useContext} from 'react';
 import {CursorContext} from '../../components/Cursor/cursor';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -52,27 +50,45 @@ const About = () => {
         toggleActions: 'play',
       },
     });
-    tl.to('.textAbout', {
+    tl.to('.textPanelOne', {
       visibility: 'hidden',
       scrollTrigger: {scrub: true, start: 'top', end: 'center+=90'},
     });
-    tl.to('.textAbout', {
+    tl.to('.textPanelOne', {
       visibility: 'visible',
       ease: 'power1.out',
       borderRightWidth: 4,
       width: '100%',
       scrollTrigger: {scrub: true, start: 'center+=100', end: 'bottom+=250'},
     });
-    tl.to('.textAbout', {
+    tl.to('.textPanelOne', {
       borderRightWidth: 0,
       scrollTrigger: {scrub: true, start: 'bottom+=200', end: 'bottom+=250'},
+    });
+    tl.to('.textPanelOne', {
+      height: 0,
+      scrollTrigger: {scrub: true, start: 'bottom+=260', end: 'bottom+=400'},
+    });
+    tl.fromTo(
+      '.darkForest',
+      {
+        height: '100vh',
+      },
+      {
+        height: 0,
+        scrollTrigger: {scrub: true, start: 'bottom+=260', end: 'bottom+=400'},
+      }
+    );
+    tl.to('.darkForest', {
+      visibility: 'hidden',
+      scrollTrigger: {scrub: true, start: 'bottom+=399', end: 'bottom+=400'},
     });
   });
 
   return (
     <div className="darkForest fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-darkForest bg-cover bg-center border-4 border-amber-400 hidden items-center text-amber-400">
       <p
-        className="textAbout relative ml-[10%] whitespace-nowrap max-w-4xl w-0 h-[19rem] text-6xl font-bold overflow-hidden border-r-4  border-amber-400 "
+        className="textPanelOne relative ml-[10%] whitespace-nowrap max-w-4xl w-0 h-[19rem] text-6xl font-bold overflow-hidden border-r-4 border-amber-400 "
         onMouseEnter={onEnterCursor}
         onMouseLeave={onLeaveCursor}
       >
