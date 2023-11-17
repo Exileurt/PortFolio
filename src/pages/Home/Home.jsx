@@ -1,21 +1,15 @@
 import Hero from './Hero';
 import PanelOne from './PanelOne';
+import PanelTwo from './PanelTwo';
 import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/all';
-import {useLayoutEffect} from 'react';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Menu = () => {
-  useLayoutEffect(() => {
-    const tl = gsap.timeline();
-    tl.to('.aboutDisplay', {
-      visibility: 'visible',
-      scrollTrigger: {scrub: true, start: 'center-=300'},
-    });
-  }, []);
-
   return (
     <div>
+      <PanelTwo />
       <PanelOne />
       <Hero />
 
