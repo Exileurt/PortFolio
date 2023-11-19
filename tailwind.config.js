@@ -9,6 +9,7 @@ export default {
       },
       backgroundImage: {
         darkForest: "url('/src/assets/darkforest.png')",
+        amoccidental: "url('/src/assets/amoccidental.png')",
       },
     },
   },
