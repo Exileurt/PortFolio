@@ -8,15 +8,15 @@ gsap.registerPlugin(TextPlugin);
 const About = () => {
   //CURSOR
   const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
-  //ANIMATION
+  //ANIMATION OPEN PANEL
   useLayoutEffect(() => {
-    const tl = gsap.timeline({paused: true});
+    const tl = gsap.timeline();
     tl.to('.darkForest', {
       visibility: 'hidden',
       scrollTrigger: {
         scrub: true,
         start: 'top',
-        end: 'center-=300',
+        end: 'center-=200',
       },
     });
     tl.to('.darkForest', {
@@ -26,8 +26,8 @@ const About = () => {
       height: '100vh',
       scrollTrigger: {
         scrub: true,
-        start: 'center-=300',
-        end: 'center-=200',
+        start: 'center-=200',
+        end: 'center+=400',
       },
     });
     tl.to('.darkForest', {
@@ -35,53 +35,10 @@ const About = () => {
       ease: 'power1.out',
       scrollTrigger: {
         scrub: true,
-        start: 'center-=200',
-        end: 'center+=200',
+        start: 'center+=400',
+        end: 'bottom+=1000',
       },
     });
-    tl.to('.darkForest', {
-      delay: 6,
-      ease: 'power1.out',
-      backgroundPositionY: 0,
-      scrollTrigger: {
-        scrub: true,
-        start: 'center+=200',
-        end: 'bottom+=500',
-        toggleActions: 'play',
-      },
-    });
-    tl.to('.textPanelOne', {
-      visibility: 'hidden',
-      scrollTrigger: {scrub: true, start: 'top', end: 'center+=90'},
-    });
-    tl.fromTo(
-      '.textPanelOne',
-      {width: 0},
-      {
-        visibility: 'visible',
-        ease: 'power1.out',
-        borderRightWidth: 4,
-        width: '100%',
-
-        scrollTrigger: {scrub: true, start: 'center+=100', end: 'bottom+=250'},
-      }
-    );
-    tl.to('.textPanelOne', {
-      borderRightWidth: 0,
-      immediateRender: false,
-      scrollTrigger: {scrub: true, start: 'bottom+=200', end: 'bottom+=250'},
-    });
-
-    tl.fromTo(
-      '.textPanelOne',
-      {
-        width: '100%',
-      },
-      {
-        width: 0,
-        scrollTrigger: {scrub: true, start: 'bottom+=260', end: 'bottom+=300'},
-      }
-    );
     tl.fromTo(
       '.darkForest',
       {
@@ -91,19 +48,83 @@ const About = () => {
         visibility: 'visible',
         width: 0,
         immediateRender: false,
-        scrollTrigger: {scrub: true, start: 'bottom+=300', end: 'bottom+=450'},
+        scrollTrigger: {
+          scrub: true,
+          start: 'bottom+=2500',
+          end: 'bottom+=3500',
+        },
       }
     );
     tl.to('.darkForest', {
       visibility: 'hidden',
-      scrollTrigger: {scrub: true, start: 'bottom+=455', end: 'bottom+=456'},
+      scrollTrigger: {
+        scrub: true,
+        start: 'bottom+=3500',
+        end: 'bottom+=4000',
+      },
     });
+  });
+  //ANIMATION TEXT ON PANEL
+  useLayoutEffect(() => {
+    const tl = gsap.timeline({ease: 'power1.out'});
+    tl.to('.darkForest', {
+      delay: 6,
+      backgroundPositionY: 0,
+      scrollTrigger: {
+        scrub: true,
+        start: 'bottom+=1000',
+        end: 'bottom+=2000',
+      },
+    });
+    tl.to('.textPanelOne', {
+      visibility: 'hidden',
+      scrollTrigger: {scrub: true, start: 'top', end: 'bottom+=1000'},
+    });
+    tl.fromTo(
+      '.textPanelOne',
+      {width: 0},
+      {
+        visibility: 'visible',
+        borderRightWidth: 4,
+        width: '100%',
+        scrollTrigger: {
+          scrub: true,
+          start: 'bottom+=1000',
+          end: 'bottom+=2000',
+        },
+      }
+    );
+    tl.to('.textPanelOne', {
+      borderRightWidth: 0,
+
+      scrollTrigger: {
+        scrub: true,
+        start: 'bottom+=2000',
+        end: 'bottom+=2050',
+      },
+    });
+
+    tl.fromTo(
+      '.textPanelOne',
+      {
+        width: '100%',
+        immediateRender: true,
+      },
+      {
+        width: 0,
+        scrollTrigger: {
+          scrub: true,
+          start: 'bottom+=2000',
+          end: 'bottom+=2500',
+        },
+      }
+    );
   });
 
   return (
     <div className="darkForest fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-darkForest bg-cover bg-center border-4 border-amber-400 hidden items-center text-amber-400">
       <p
-        className="textPanelOne relative ml-[10%] whitespace-nowrap max-w-4xl w-0 h-[19rem] text-6xl font-bold overflow-hidden border-r-4 border-amber-400 "
+        className="textPanelOne relative ml-[10%] whitespace-nowrap max-w-4xl w-0 h-[19rem] text-6xl font-bold overflow-hidden border-r-4 border-amber-400 select-none"
         onMouseEnter={onEnterCursor}
         onMouseLeave={onLeaveCursor}
       >

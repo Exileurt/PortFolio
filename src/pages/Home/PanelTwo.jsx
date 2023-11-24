@@ -18,13 +18,13 @@ const PanelTwo = () => {
       height: '100vh',
       scrollTrigger: {
         scrub: true,
-        start: 'bottom+=200',
-        end: 'bottom+=500',
+        start: 'bottom+=15000',
+        end: 'bottom+=1500',
       },
     });
     tl.to('.imgOne', {
       x: -600,
-      scrollTrigger: {scrub: true, start: 'bottom+=800', end: 'bottom+=1000'},
+      scrollTrigger: {scrub: true, start: 'bottom+=1500', end: 'bottom+=1500'},
     });
   });
   //BUTTON HOVER
