@@ -36,31 +36,31 @@ const Hero = () => {
     gsap.to('.textHero', {
       ease: 'power1.out',
       width: 0,
-      scrollTrigger: {scrub: true, start: 'top', end: 'center'},
+      scrollTrigger: {scrub: true, start: 'center-=200', end: 'bottom+=100'},
     }),
       gsap.to('.scrollDown', {
         x: 300,
         ease: 'power1.out',
         scrollTrigger: {
           scrub: true,
-          start: 'top',
-          end: 'center',
+          start: 'center',
+          end: 'bottom+=100',
         },
       }),
       gsap.to('.scrollDown', {
         visibility: 'hidden',
         scrollTrigger: {
           scrub: true,
-          start: 'center',
-          end: 'center',
+          start: 'bottom',
+          end: 'bottom+=100',
         },
       }),
       gsap.to('.textHero', {
         visibility: 'hidden',
         scrollTrigger: {
           scrub: true,
-          start: 'center',
-          end: 'center',
+          start: 'bottom',
+          end: 'bottom+=100',
         },
       }),
       [];

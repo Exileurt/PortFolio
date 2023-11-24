@@ -13,9 +13,7 @@ const Menu = () => {
       <PanelOne />
       <Hero />
 
-      <div className="flex justify-center h-screen bg-gradient-to-r from-very-dark-yellow to-black"></div>
-      <div className="flex justify-center h-screen bg-gradient-to-r from-very-dark-yellow to-black"></div>
-      <div className="flex justify-center h-screen bg-gradient-to-r from-very-dark-yellow to-black"></div>
+      <div className="flex justify-center h-[600rem] bg-gradient-to-r from-very-dark-yellow to-black"></div>
     </div>
   );
 };
