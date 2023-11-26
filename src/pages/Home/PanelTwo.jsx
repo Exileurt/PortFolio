@@ -2,6 +2,8 @@ import gsap from 'gsap';
 import {ScrollTrigger, TextPlugin} from 'gsap/all';
 import {useLayoutEffect, useContext} from 'react';
 import {CursorContext} from '../../components/Cursor/cursor';
+import armenian from '../../assets/armenian.png';
+import portfolio from '../../assets/portfolio.png';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -18,51 +20,70 @@ const PanelTwo = () => {
       height: '100vh',
       scrollTrigger: {
         scrub: true,
-        start: 'bottom+=15000',
-        end: 'bottom+=1500',
+        start: 'bottom+=2000',
+        end: 'bottom+=2000',
       },
     });
     tl.to('.imgOne', {
       x: -600,
       scrollTrigger: {scrub: true, start: 'bottom+=1500', end: 'bottom+=1500'},
     });
+    tl.to('.imgOne', {
+      x: -600,
+      scrollTrigger: {scrub: true, start: 'bottom+=1500', end: 'bottom+=1500'},
+    });
   });
-  //BUTTON HOVER
-  const onEnter = ({currentTarget}) => {
-    gsap.to(currentTarget, {
-      backgroundColor: '#714F19',
-      fontWeight: 'bolder',
-      duration: 0.5,
-      ease: 'power1.out',
-      borderColor: 'yellow',
+  //TEXT ANIMATION
+  useLayoutEffect(() => {
+    const tl = gsap.timeline();
+    tl.to('.textCreate', {
+      visibility: 100,
+      color: '#FFD60A',
+      text: 'I CREATE VARIOUS WEBSITES,',
+      scrollTrigger: {
+        scrub: true,
+        start: 'bottom+=2500',
+        end: 'bottom+=2900',
+      },
     });
-    onEnterCursor();
-  };
-  const onLeave = ({currentTarget}) => {
-    gsap.to(currentTarget, {
-      backgroundColor: '',
-      fontWeight: 'normal',
-      duration: 0.5,
-      ease: 'power1.out',
-      borderColor: '',
-    });
-    onLeaveCursor();
-  };
+  });
 
   return (
-    <div className="panelTwo bg-amoccidental bg-cover hidden fixed justify-center flex-col text-center top-0 left-0 h-screen w-full   border-4 border-amber-400">
-      <div className="flex flex-col items-center max-w-2xl ml-32 border-l-4 border-b-4 border-amber-400 backdrop-blur-sm space-y-4 p-4">
-        <h2 className="font-bold text-6xl text-amber-400 text-left">
-          I USE THESE SKILL TO CREATE VARIOUS WEBSITES, LIKE LEARNING WEBSITE..
-        </h2>
-        <a
-          href="https://armenian-occidental.com"
-          className="max-w-xl px-12 py-2 border-2 border-white rounded-full text-white"
-          onMouseEnter={onEnter}
-          onMouseLeave={onLeave}
-        >
-          WEBSITE
-        </a>
+    <div className="panelTwo bg-gradient-to-r from-very-dark-yellow to-black hidden fixed items-center flex-col text-center top-0 left-0 h-screen w-full">
+      <div className="flex flex-col justify-evenly h-full">
+        <div className="text-center tracking-[1rem] text-soft-yellow text-4xl font-bold max-w-4xl">
+          <h2 className="textCreate">
+            <br />
+          </h2>
+          <h2 className=" mt-10 tracking-[0.5rem]">LIKE LEARNING WEBSITE...</h2>
+        </div>
+        <div className="relative mt-0">
+          <a
+            href="https://armenian-occidental.com"
+            className="flex items-center -my-3 "
+          >
+            <img
+              src={armenian}
+              alt="armenian"
+              className="h-[30rem] z-10 hover:scale-110"
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
+            />
+            <img
+              src={portfolio}
+              alt="portfolio"
+              className="absolute left-[38rem] h-80 w-auto z-0"
+            />
+          </a>
+          <a
+            href="https://armenian-occidental.com"
+            className="text-soft-yellow text-xl tracking-widest"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+          >
+            armenian-occidental.com
+          </a>
+        </div>
       </div>
     </div>
   );
