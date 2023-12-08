@@ -4,7 +4,7 @@ import CursorProvider from './components/Cursor/cursor.jsx';
 
 const App = () => {
   return (
-    <div className="h-screen bg-gradient-to-r from-very-dark-yellow to-black">
+    <div className="">
       <CursorProvider>
         <Router>
           <Routes>

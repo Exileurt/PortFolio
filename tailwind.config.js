@@ -3,8 +3,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'very-dark-yellow': '#16120C',
-        'dark-yellow': '#3F2700',
+        'dark-d': '#181818',
+        'light-white': '#F9F2E2',
         'soft-yellow': '#714F19',
       },
       backgroundImage: {

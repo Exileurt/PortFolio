@@ -57,13 +57,13 @@ const Menu = () => {
   return (
     <div className="relative">
       <button
-        className="absolute top-12 right-12 flex items-center"
+        className="absolute top-20 right-20 flex items-center z-50"
         onClick={handleMenuToggle}
         onMouseEnter={onEnterCursor}
         onMouseLeave={onLeaveCursor}
       >
         <svg
-          className="w-10 h-10 transition-all duration-300 ease-in-out stroke-[#3F2700] hover:stroke-amber-400 hover:scale-110"
+          className="w-10 h-10 transition-all duration-300 ease-in-out stroke-white hover:scale-110"
           viewBox="0 0 23 17"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +113,7 @@ const Menu = () => {
             >
               <path
                 d="M46.6801 0L25 21.6902L3.3199 0L0 3.29969L21.6914 25.0004L0 46.7018L3.3199 50L25 28.3105L46.6801 50L50 46.7018L28.3086 25.0004L50 3.29969L46.6801 0Z"
-                fill="white"
+                fill="#F9F2E2"
               />
             </svg>
           </button>

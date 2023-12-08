@@ -20,22 +20,11 @@ const CursorProvider = ({children}) => {
         ease: 'ease',
       });
     };
-    gsap.set(cursor.current, {xPercent: -50, yPercent: -50});
-    let xTo = gsap.quickTo(cursor.current, 'x', {
-      duration: 0.1,
-      ease: 'ease',
-    });
-    let yTo = gsap.quickTo(cursor.current, 'y', {
-      duration: 0.1,
-      ease: 'ease',
-    });
-    window.addEventListener('mousemove', e => {
-      xTo(e.clientX);
-      yTo(e.clientY);
-    });
+
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
   }, []);
+
   const cursorOut = useRef();
   useLayoutEffect(() => {
     gsap.set(cursorOut.current, {xPercent: -50, yPercent: -50});
@@ -54,25 +43,12 @@ const CursorProvider = ({children}) => {
   }, []);
 
   const onEnterCursor = () => {
-    gsap.to(cursor.current, {
-      scale: 2,
-      borderWidth: 1,
-      borderColor: 'white',
-      backgroundColor: 'transparent',
-    });
     gsap.to(cursorOut.current, {
       scale: 2,
-      borderWidth: 2,
-      borderColor: 'white',
     });
   };
   const onLeaveCursor = () => {
-    gsap.to(cursor.current, {
-      scale: 1,
-      borderWidth: 0,
-      backgroundColor: '#FFCA16',
-    });
-    gsap.to(cursorOut.current, {scale: 1, borderColor: '#FFCA16'});
+    gsap.to(cursorOut.current, {scale: 1});
   };
 
   return (
@@ -82,12 +58,8 @@ const CursorProvider = ({children}) => {
       {children}
       <div>
         <div
-          ref={cursor}
-          className="fixed w-2 h-2 top-0 left-0 bg-amber-400 rounded-full z-50 pointer-events-none"
-        />
-        <div
           ref={cursorOut}
-          className="fixed w-7 h-7 top-0 left-0 border border-amber-400 rounded-full z-50 pointer-events-none"
+          className="fixed w-7 h-7 top-0 left-0 bg-white/20 rounded-full z-50 pointer-events-none"
         />
       </div>
     </CursorContext.Provider>
