@@ -57,7 +57,7 @@ const Menu = () => {
   return (
     <div className="relative">
       <button
-        className="absolute top-20 right-20 flex items-center z-50"
+        className="absolute top-20 right-20 flex items-center z-40"
         onClick={handleMenuToggle}
         onMouseEnter={onEnterCursor}
         onMouseLeave={onLeaveCursor}
@@ -98,27 +98,26 @@ const Menu = () => {
           id="menu"
           className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-40"
         >
-          <button
-            onMouseEnter={onEnterCursor}
-            onMouseLeave={onLeaveCursor}
-            onClick={handleMenuToggle}
-          >
-            <svg
-              className="absolute w-8 h-8 top-12 right-12 ease-in transition-all hover:scale-125"
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <nav className="relative flex text-white text-9xl font-semibold select-none">
+            <button
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
+              onClick={handleMenuToggle}
             >
-              <path
-                d="M46.6801 0L25 21.6902L3.3199 0L0 3.29969L21.6914 25.0004L0 46.7018L3.3199 50L25 28.3105L46.6801 50L50 46.7018L28.3086 25.0004L50 3.29969L46.6801 0Z"
-                fill="#F9F2E2"
-              />
-            </svg>
-          </button>
-
-          <nav className="flex text-white text-9xl font-semibold select-none">
+              <svg
+                className="absolute w-8 h-8 top-4 -left-12 ease-in transition-all hover:scale-125"
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M46.6801 0L25 21.6902L3.3199 0L0 3.29969L21.6914 25.0004L0 46.7018L3.3199 50L25 28.3105L46.6801 50L50 46.7018L28.3086 25.0004L50 3.29969L46.6801 0Z"
+                  fill="#F9F2E2"
+                />
+              </svg>
+            </button>
             <ul className="-space-y-5 ">
               <li id="about" onMouseEnter={onEnter} onMouseLeave={onLeave}>
                 <NavLink
