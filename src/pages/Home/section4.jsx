@@ -2,7 +2,7 @@ import screen from '../../assets/screen.svg';
 import paint from '../../assets/paint.svg';
 import community from '../../assets/community.svg';
 
-const section4 = () => {
+const Section4 = () => {
   return (
     <div className="relative flex justify-center items-center h-screen">
       <div className="relative flex justify-center items-center h-5/6 w-11/12">
@@ -53,4 +53,4 @@ const section4 = () => {
   );
 };
 
-export default section4;
+export default Section4;
