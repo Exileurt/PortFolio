@@ -3,7 +3,7 @@ import linkedin from '../../assets/linkedin.svg';
 import insta from '../../assets/insta.svg';
 import mail from '../../assets/mail.svg';
 
-const section5 = () => {
+const Section5 = () => {
   return (
     <div className="relative flex justify-center items-center h-[70vh] overflow-hidden">
       <div className="relative flex justify-center items-center h-5/6 w-11/12">
@@ -30,4 +30,4 @@ const section5 = () => {
   );
 };
 
-export default section5;
+export default Section5;
