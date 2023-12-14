@@ -1,7 +1,7 @@
-import {NavLink} from 'react-router-dom';
 import {useContext, useState, useLayoutEffect} from 'react';
 import gsap from 'gsap';
 import {CursorContext} from '../../components/Cursor/cursor';
+import cross from '../../assets/cross.svg';
 
 const Menu = () => {
   const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
@@ -26,20 +26,15 @@ const Menu = () => {
     if (menuIsOpen) {
       let tl = gsap.timeline({paused: true});
       tl.fromTo('#menu', {y: -2000}, {y: 0, ease: 'power1.out', duration: 0.4});
-      tl.fromTo('#about', {x: 2000}, {x: 0, ease: 'power1.out', duration: 0.2});
       tl.fromTo(
-        '#project',
+        '#link',
         {x: 2000},
-        {x: 0, ease: 'power1.out', duration: 0.2}
+        {x: 0, ease: 'power1.out', duration: 0.2, stagger: 0.1}
       );
-      tl.fromTo(
-        '#linkedin',
-        {x: 2000},
-        {x: 0, ease: 'power1.out', duration: 0.2}
-      );
+
       if (animationMenuIsOpen) {
         tl.play();
-      } else if (!menuIsOpen) {
+      } else if (menuIsOpen) {
         tl.reverse(2);
         gsap.to('#cross', {rotation: -90, duration: 0.5});
       }
@@ -48,11 +43,24 @@ const Menu = () => {
 
   //On enter-leave
   const onEnter = ({currentTarget}) => {
-    gsap.to(currentTarget, {color: '#FFCA16'});
+    gsap.to(currentTarget, {color: '#7061A3'});
   };
   const onLeave = ({currentTarget}) => {
     gsap.to(currentTarget, {color: 'white'});
   };
+
+  //Scroll smooth
+  function scrollToSection(e) {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href').slice(1);
+
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      targetSection.scrollIntoView({behavior: 'smooth'});
+      handleMenuToggle();
+    }
+  }
 
   return (
     <div className="relative">
@@ -104,50 +112,53 @@ const Menu = () => {
               onMouseLeave={onLeaveCursor}
               onClick={handleMenuToggle}
             >
-              <svg
-                className="absolute w-8 h-8 top-4 -left-12 ease-in transition-all hover:scale-125"
-                width="50"
-                height="50"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M46.6801 0L25 21.6902L3.3199 0L0 3.29969L21.6914 25.0004L0 46.7018L3.3199 50L25 28.3105L46.6801 50L50 46.7018L28.3086 25.0004L50 3.29969L46.6801 0Z"
-                  fill="#F9F2E2"
-                />
-              </svg>
+              <img
+                id="cross"
+                src={cross}
+                alt="cross"
+                className="w-8 absolute -left-14 top-4 hover:scale-110"
+              />
             </button>
             <ul className="-space-y-5 ">
-              <li id="about" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink
-                  to="/"
-                  onClick={handleMenuToggle}
+              <li id="link" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <a
+                  href="#section2"
+                  onClick={scrollToSection}
                   onMouseEnter={onEnterCursor}
                   onMouseLeave={onLeaveCursor}
                 >
                   ABOUT
-                </NavLink>
+                </a>
               </li>
-              <li id="project" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink
-                  to="/"
-                  onClick={handleMenuToggle}
+              <li id="link" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <a
+                  href="#section3"
+                  onClick={scrollToSection}
                   onMouseEnter={onEnterCursor}
                   onMouseLeave={onLeaveCursor}
                 >
                   PROJECT
-                </NavLink>
+                </a>
               </li>
-              <li id="linkedin" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-                <NavLink
-                  to="/"
-                  onClick={handleMenuToggle}
+              <li id="link" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <a
+                  href="#section4"
+                  onClick={scrollToSection}
                   onMouseEnter={onEnterCursor}
                   onMouseLeave={onLeaveCursor}
                 >
-                  LINKEDIN
-                </NavLink>
+                  SKILL
+                </a>
+              </li>
+              <li id="link" onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <a
+                  href="#section5"
+                  onClick={scrollToSection}
+                  onMouseEnter={onEnterCursor}
+                  onMouseLeave={onLeaveCursor}
+                >
+                  CONTACT
+                </a>
               </li>
             </ul>
           </nav>
