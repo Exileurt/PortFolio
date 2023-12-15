@@ -21,7 +21,6 @@ const Section2 = () => {
         start: 'top+=400',
         end: 'top+=600',
         scrub: true,
-        markers: true,
       },
     });
     gsap.set('.paris', {x: -300});
@@ -64,7 +63,7 @@ const Section2 = () => {
     <div className="relative flex justify-center items-center h-screen">
       <div className="flex justify-between h-5/6 w-11/12">
         <div>
-          <h2 className="about playfair text-6xl">About.</h2>
+          <h2 className="about playfair text-6xl select-none">About.</h2>
           <h3 className="paris text-xl">Based in France, PARIS.</h3>
         </div>
         <div className="flex items-center">
