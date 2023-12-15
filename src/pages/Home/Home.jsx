@@ -12,8 +12,8 @@ import gradiant4 from '../../assets/gradient/gradient4.png';
 
 const Home = () => {
   return (
-    <div className="bg-dark-d text-light-white m-0 border border-black">
-      <div>
+    <div className="bg-dark-d text-light-white m-0 border border-black z-10">
+      <span className="z-0">
         <img
           src={gradiant}
           alt="gradiant"
@@ -34,7 +34,7 @@ const Home = () => {
           alt="gradiant4"
           className="absolute -bottom-[170rem] right-0"
         />
-      </div>
+      </span>
 
       <Menu />
       <div id="section1">
