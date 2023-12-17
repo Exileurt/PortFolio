@@ -31,17 +31,23 @@ const Section2 = () => {
   });
   //Profil
   useGSAP(() => {
-    gsap.set('.profil', {
-      yPercent: 100,
-      scale: 1.2,
-      width: '25rem',
-    });
-    gsap.to('.profil', {
-      yPercent: 0,
-      scale: 1.0,
-      delay: -1.5,
-      scrollTrigger: {start: 'top+=500', end: 'top+=800', scrub: true},
-    });
+    gsap.fromTo(
+      '.profil',
+      {
+        yPercent: 100,
+        scale: 1.2,
+        scrub: true,
+      },
+      {
+        yPercent: 0,
+        scale: 1.0,
+        scrollTrigger: {
+          start: 'top+=500',
+          end: 'top+=800',
+          scrub: true,
+        },
+      }
+    );
   });
   //Text
   useGSAP(() => {

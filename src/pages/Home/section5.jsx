@@ -42,8 +42,6 @@ const Section5 = () => {
         <div className="absolute bottom-0 flex justify-between w-full">
           <a
             href="https://github.com/Exileurt/PortFolio"
-            rel="noreferrer"
-            target="_blank"
             className="hover:scale-105"
           >
             <h5>GITHUB LINK</h5>
