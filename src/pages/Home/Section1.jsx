@@ -32,7 +32,7 @@ const Section1 = () => {
           </h1>
         </div>
 
-        <div className="absolute bottom-6 left-6 flex flex-col">
+        <div className="absolute bottom-6 left-6 flex flex-col select-none">
           <a
             href="https://www.linkedin.com/in/aurelien-favrel-24983b28b/"
             rel="noreferrer"
