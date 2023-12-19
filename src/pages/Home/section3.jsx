@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import gsap from 'gsap';
 import {useGSAP} from '@gsap/react';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
@@ -12,6 +12,7 @@ import armenian1 from '../../assets/armenian1.jpg';
 import armenian2 from '../../assets/armenian2.png';
 
 const Section3 = () => {
+  const container = useRef();
   const [linkOneIsOpen, setLinkOneIsOpen] = useState(false);
   const [animationlinkOne, setAnimationLinkOne] = useState(false);
   const linkOneHandleToggle = () => {
@@ -52,7 +53,17 @@ const Section3 = () => {
       tlWebsiteOne.to('.websiteOne', {xPercent: 100, duration: 0.5});
     }
   }, [linkOneIsOpen, animationlinkOne]);
+  // BG transition
+  const {contextSafe} = useGSAP({scope: container});
 
+  const onHover = contextSafe(() => {
+    gsap.set('.bgLinkOne', {yPercent: 100});
+    gsap.to('.bgLinkOne', {yPercent: 0});
+  });
+  const onLeave = contextSafe(() => {
+    gsap.set('.bgLinkOne', {yPercent: 0});
+    gsap.to('.bgLinkOne', {yPercent: 100});
+  });
   //Portfolio
   useGSAP(() => {
     gsap.set('.portfolio', {
@@ -86,14 +97,20 @@ const Section3 = () => {
   });
 
   return (
-    <div className="relative flex justify-center items-center h-screen">
-      <div className="relative flex justify-between items-center h-5/6 w-11/12 overflow-hidden">
+    <div className="relative flex justify-center items-center h-screen overflow-hidden">
+      <div className="relative flex justify-between items-center h-5/6 w-11/12">
         <div className="flex flex-col justify-center items-end w-1/2 pr-6 overflow-hidden">
-          <div className="portfolioLink flex justify-between items-center w-full h-28 border-b p-10 font-light">
+          <div
+            ref={container}
+            className="portfolioLink relative flex justify-between items-center w-full h-28 border-b p-10 font-light overflow-hidden z-10"
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+          >
+            <span className="absolute bgLinkOne bottom-0 left-0 bg-slate-200/10 h-full w-full z-0" />
             <h3 className="select-none">
               01. <span className="ml-12">Armenian learning website.</span>
             </h3>
-            <button onClick={linkOneHandleToggle}>
+            <button onClick={linkOneHandleToggle} className="z-10">
               <img src={link} alt="link" className="hover:scale-105" />
             </button>
           </div>
@@ -122,58 +139,60 @@ const Section3 = () => {
         </div>
 
         {linkOneIsOpen && (
-          <div className="websiteOne relative flex flex-col items-center w-1/2 h-4/6 bg-black/20 p-5 rounded-md">
-            <button>
-              <img
-                src={cross}
-                alt="cross"
-                onClick={linkOneHandleToggle}
-                className="absolute top-5 left-5 w-6 hover:scale-105"
-              />
-            </button>
-            <div className="relative w-3/4 flex rounded-md overflow-hidden">
-              <img src={armenian} alt="armenian" className="imageOne z-0" />
-              <img
-                src={armenian1}
-                alt="armenian1"
-                className="h-full w-full absolute top-0 left-0 imageTwo z-10"
-              />{' '}
-              <img
-                src={armenian2}
-                alt="armenian2"
-                className="h-full w-full absolute top-0 left-0 imageThree z-20"
-              />
-              <img
-                src={armenian}
-                alt="armenian"
-                className="h-full w-full absolute top-0 left-0 imageFour z-30"
-              />
-            </div>
-
-            <div className="flex mt-2 items-center justify-between w-3/4">
-              <div className="mx-6 select-none overflow-hidden">
-                <h4 className="functionnality text-lg font-extraboldflex">
-                  FUNCTIONNALITY
-                </h4>
-                <ul className="functionnalityList text-sm">
-                  <li>- LANGUAGE SWITCHER</li>
-                  <li>- PAGES TRANSITION</li>
-                  <li>- WORD GAME</li>
-                  <li>- DARKMODE</li>
-                  <li>- PARALLAX</li>
-                  <li>- REACT ROUTER</li>
-                </ul>
+          <div className=" relative  w-1/2 h-4/6 rounded-md overflow-hidden">
+            <div className="websiteOne flex flex-col items-center w-full h-full bg-black/20 p-5 rounded-md">
+              <button>
+                <img
+                  src={cross}
+                  alt="cross"
+                  onClick={linkOneHandleToggle}
+                  className="absolute top-5 left-5 w-6 hover:scale-105"
+                />
+              </button>
+              <div className="relative w-3/4 flex rounded-md overflow-hidden">
+                <img src={armenian} alt="armenian" className="imageOne z-0" />
+                <img
+                  src={armenian1}
+                  alt="armenian1"
+                  className="h-full w-full absolute top-0 left-0 imageTwo z-10"
+                />
+                <img
+                  src={armenian2}
+                  alt="armenian2"
+                  className="h-full w-full absolute top-0 left-0 imageThree z-20"
+                />
+                <img
+                  src={armenian}
+                  alt="armenian"
+                  className="h-full w-full absolute top-0 left-0 imageFour z-30"
+                />
               </div>
 
-              <a
-                href="https://armenian-occidental.com"
-                rel="noreferrer"
-                target="_blank"
-                className="flex rounded-full px-4 py-2 border hover:bg-slate-200/20"
-              >
-                WEBSITE
-                <img src={arrow1} alt="arrow1" className="-rotate-[140deg]" />
-              </a>
+              <div className="flex mt-2 items-center justify-between w-3/4">
+                <div className="mx-6 select-none overflow-hidden">
+                  <h4 className="functionnality text-lg font-extraboldflex">
+                    FUNCTIONNALITY
+                  </h4>
+                  <ul className="functionnalityList text-sm">
+                    <li>- LANGUAGE SWITCHER</li>
+                    <li>- PAGES TRANSITION</li>
+                    <li>- WORD GAME</li>
+                    <li>- DARKMODE</li>
+                    <li>- PARALLAX</li>
+                    <li>- REACT ROUTER</li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://armenian-occidental.com"
+                  rel="noreferrer"
+                  target="_blank"
+                  className="flex rounded-full px-4 py-2 border hover:bg-slate-200/20"
+                >
+                  WEBSITE
+                  <img src={arrow1} alt="arrow1" className="-rotate-[140deg]" />
+                </a>
+              </div>
             </div>
           </div>
         )}

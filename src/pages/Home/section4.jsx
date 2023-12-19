@@ -25,7 +25,13 @@ const Section4 = () => {
     gsap.set('.skills', {scale: 0});
     gsap.to('.skills', {
       scale: 1,
-      scrollTrigger: {start: 'center+=100', end: 'center+=400', scrub: true},
+      duration: 1,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.skills',
+        toggleActions: 'play pause resume reverse',
+        start: 'top-=600',
+      },
     });
   });
   return (
