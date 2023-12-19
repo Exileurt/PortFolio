@@ -10,7 +10,7 @@ const Section1 = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="relative flex justify-center items-center h-5/6 w-11/12  bg-black/30 rounded-xl">
+      <div className="relative flex justify-center items-center h-5/6 w-11/12  bg-black/10 rounded-xl">
         <p className="absolute top-6 left-6 select-none">
           Site designed by me.
         </p>

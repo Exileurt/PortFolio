@@ -36,15 +36,16 @@ const Section2 = () => {
       {
         yPercent: 100,
         scale: 1.2,
-        scrub: true,
       },
       {
         yPercent: 0,
         scale: 1.0,
+        duration: 1,
+        ease: 'power1.out',
         scrollTrigger: {
-          start: 'top+=500',
-          end: 'top+=800',
-          scrub: true,
+          trigger: '.profil',
+          start: 'top-=500',
+          toggleActions: 'play pause resume reverse',
         },
       }
     );
@@ -54,14 +55,26 @@ const Section2 = () => {
     gsap.set('.textProfil', {xPercent: 100});
     gsap.to('.textProfil', {
       xPercent: 0,
-      scrollTrigger: {start: 'top+=600', end: 'top+=700', scrub: true},
+      duration: 1,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.textProfil',
+        start: 'top-=500',
+        toggleActions: 'play pause resume reverse',
+      },
     });
     gsap.set('.textProfilTwo', {xPercent: 100});
     gsap.to('.textProfilTwo', {
       xPercent: 0,
       text: 'MY UNCONVENTIONAL BACKGROUND HAS TAUGHT ME THE IMPORTANCE OF ATTENTION TO DETAIL, PERSEVERANCE, AND PROBLEM-SOLVING. I AM PASSIONATE ABOUT THE ART OF BRINGING IDEAS TO LIFE THROUGH CODE, USING TECHNOLOGIES SUCH AS JAVASCRIPT, REACT, TAILWIND, AND GSAP.',
       color: 'white',
-      scrollTrigger: {start: 'top+=700', end: 'top+=800', scrub: true},
+      duration: 1,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: '.textProfilTwo',
+        start: 'top-=600',
+        toggleActions: 'play pause resume reverse',
+      },
     });
   });
 
