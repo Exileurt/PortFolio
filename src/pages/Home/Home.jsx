@@ -1,9 +1,9 @@
 import Menu from './Menu';
-import Section1 from './Section1';
-import Section2 from './Section2';
-import Section3 from './Section3';
-import Section4 from './Section4';
-import Section5 from './Section5';
+import Section1 from '../Home/Section1';
+import Section2 from '../Home/Section2';
+import Section3 from '../Home/Section3';
+import Section4 from '../Home/Section4';
+import Section5 from '../Home/Section5';
 
 import gradiant from '../../assets/gradient/gradient.png';
 import gradiant2 from '../../assets/gradient/gradient2.png';
