@@ -10,21 +10,21 @@ const Section1 = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="relative flex justify-center items-center h-5/6 w-11/12  bg-black/10 rounded-xl">
-        <p className="absolute top-6 left-6 select-none">
+      <div className="relative flex justify-center items-center h-5/6 w-11/12 rounded-xl sm:bg-black/10">
+        <p className="hidden absolute top-6 left-6 select-none sm:block">
           Site designed by me.
         </p>
 
         <div className="text-center select-none max-w-2xl">
           <h2
-            className="text-3xl"
+            className="text-xl sm:text-3xl"
             onMouseEnter={onEnterCursor}
             onMouseLeave={onLeaveCursor}
           >
             creative developer*
           </h2>
           <h1
-            className="text-9xl tracking-widest"
+            className="text-5xl sm:text-9xl tracking-widest"
             onMouseEnter={onEnterCursor}
             onMouseLeave={onLeaveCursor}
           >
@@ -32,12 +32,14 @@ const Section1 = () => {
           </h1>
         </div>
 
-        <div className="absolute bottom-6 left-6 flex flex-col select-none">
+        <div className="hidden absolute bottom-6 left-6 flex-col select-none sm:flex">
           <a
             href="https://www.linkedin.com/in/aurelien-favrel-24983b28b/"
             rel="noreferrer"
             target="_blank"
             className="hover:scale-105"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
           >
             <img src={linkedin} alt="linkedin" />
           </a>
@@ -46,6 +48,8 @@ const Section1 = () => {
             rel="noreferrer"
             target="_blank"
             className="hover:scale-105"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
           >
             <img src={github} alt="github" />
           </a>
@@ -54,14 +58,16 @@ const Section1 = () => {
             rel="noreferrer"
             target="_blank"
             className="hover:scale-105"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
           >
             <img src={insta} alt="insta" />
           </a>
         </div>
 
-        <div className="absolute flex bottom-6 right-6 items-end select-none">
+        <div className="absolute flex items-end select-none bottom-6 sm:right-6">
           <span className="pr-6 leading-3">Scroll down</span>
-          <img src={arrow} alt="arrow" />
+          <img src={arrow} alt="arrow" className="hidden sm:block" />
         </div>
       </div>
     </div>

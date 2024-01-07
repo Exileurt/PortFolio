@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 import cross from '../../assets/cross.svg';
 import arrow1 from '../../assets/arrow1.svg';
-import link from '../../assets/link.svg';
 import armenian from '../../assets/armenian.jpg';
 import armenian1 from '../../assets/armenian1.jpg';
 import armenian2 from '../../assets/armenian2.png';
@@ -26,7 +25,7 @@ const Section3 = () => {
       setLinkOneIsOpen(true);
     }
   };
-
+  const {contextSafe} = useGSAP({scope: container});
   //Link WebsiteOne -animation
   useGSAP(() => {
     let tl = gsap.timeline();
@@ -53,16 +52,22 @@ const Section3 = () => {
       tlWebsiteOne.to('.websiteOne', {xPercent: 100, duration: 0.5});
     }
   }, [linkOneIsOpen, animationlinkOne]);
-  // BG transition
-  const {contextSafe} = useGSAP({scope: container});
-
+  //Link Arrow
+  const onHoverArrow = contextSafe(() => {});
+  const onLeaveArrow = contextSafe(() => {});
+  //BG transition
+  useGSAP(() => gsap.set('.bgLinkOne', {yPercent: 100}));
   const onHover = contextSafe(() => {
     gsap.set('.bgLinkOne', {yPercent: 100});
     gsap.to('.bgLinkOne', {yPercent: 0});
+    gsap.set('.arrowLink', {xPercent: 0});
+    gsap.to('.arrowLink', {xPercent: 100, duration: 0.2});
   });
   const onLeave = contextSafe(() => {
     gsap.set('.bgLinkOne', {yPercent: 0});
     gsap.to('.bgLinkOne', {yPercent: 100});
+    gsap.set('.arrowLink', {xPercent: 100, duration: 0.2});
+    gsap.to('.arrowLink', {xPercent: 0});
   });
   //Portfolio
   useGSAP(() => {
@@ -98,36 +103,50 @@ const Section3 = () => {
 
   return (
     <div className="relative flex justify-center items-center h-screen overflow-hidden">
-      <div className="relative flex justify-between items-center h-5/6 w-11/12">
-        <div className="flex flex-col justify-center items-end w-1/2 pr-6 overflow-hidden">
-          <div
+      <div className="relative flex justify-between h-5/6 w-11/12 items-center">
+        <div className="flex flex-col w-full justify-center items-end pr-6 md:w-1/2 overflow-hidden">
+          <button
             ref={container}
+            onClick={linkOneHandleToggle}
             className="portfolioLink relative flex justify-between items-center w-full h-28 border-b p-10 font-light overflow-hidden z-10"
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
           >
             <span className="absolute bgLinkOne bottom-0 left-0 bg-slate-200/10 h-full w-full z-0" />
-            <h3 className="select-none">
-              01. <span className="ml-12">Armenian learning website.</span>
+            <h3 className="select-none flex max-sm:items-center">
+              01.
+              <span className="max-sm:ml-8">Armenian learning website.</span>
             </h3>
-            <button onClick={linkOneHandleToggle} className="z-10">
-              <img src={link} alt="link" className="hover:scale-105" />
-            </button>
-          </div>
+            <img
+              src={arrow1}
+              alt="arrowLink"
+              className="arrowLink -rotate-90 hover:scale-105"
+              onMouseLeave={onLeaveArrow}
+              onMouseEnter={onHoverArrow}
+            />
+          </button>
 
           <div className="portfolioLink flex justify-between items-center w-full h-28 border-b p-10">
             <h3 className="select-none">
-              02. <span className="ml-12 select-none">Coming soon</span>
+              02. <span className="max-sm:ml-8">Coming soon</span>
             </h3>
 
-            <img src={link} alt="link" />
+            <img
+              src={arrow1}
+              alt="arrowLink"
+              className="arrowLink -rotate-90 hover:scale-105"
+            />
           </div>
           <div className="portfolioLink relative flex justify-between items-center w-full h-28 border-b p-10">
             <h3 className="select-none">
-              03. <span className="ml-12">Coming soon</span>
+              03. <span className="max-sm:ml-8">Coming soon</span>
             </h3>
 
-            <img src={link} alt="link" />
+            <img
+              src={arrow1}
+              alt="arrowLink"
+              className="-rotate-90 hover:scale-105"
+            />
 
             <a
               href="#"
@@ -139,14 +158,14 @@ const Section3 = () => {
         </div>
 
         {linkOneIsOpen && (
-          <div className=" relative  w-1/2 h-4/6 rounded-md overflow-hidden">
-            <div className="websiteOne flex flex-col items-center w-full h-full bg-black/20 p-5 rounded-md">
+          <div className="relative w-1/2 h-4/6 rounded-md overflow-hidden z-10 max-sm:absolute max-sm:w-full max-sm:bg-black/80 max-sm:border">
+            <div className="websiteOne flex flex-col items-center w-full h-full bg-black/10 p-5 rounded-md">
               <button>
                 <img
                   src={cross}
                   alt="cross"
                   onClick={linkOneHandleToggle}
-                  className="absolute top-5 left-5 w-6 hover:scale-105"
+                  className="absolute top-5 left-5 w-6 hover:scale-125"
                 />
               </button>
               <div className="relative w-3/4 flex rounded-md overflow-hidden">
@@ -170,10 +189,10 @@ const Section3 = () => {
 
               <div className="flex mt-2 items-center justify-between w-3/4">
                 <div className="mx-6 select-none overflow-hidden">
-                  <h4 className="functionnality text-lg font-extraboldflex">
+                  <h4 className="functionnality text-lg font-extraboldflex max-sm:text-base">
                     FUNCTIONNALITY
                   </h4>
-                  <ul className="functionnalityList text-sm">
+                  <ul className="functionnalityList text-sm  max-sm:text-xs">
                     <li>- LANGUAGE SWITCHER</li>
                     <li>- PAGES TRANSITION</li>
                     <li>- WORD GAME</li>
@@ -197,7 +216,7 @@ const Section3 = () => {
           </div>
         )}
 
-        <h2 className="portfolio absolute top-0 right-0 playfair text-6xl select-none">
+        <h2 className="portfolio absolute top-0 right-0 playfair text-6xl select-none ">
           Portfolio.
         </h2>
       </div>
