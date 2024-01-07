@@ -11,21 +11,21 @@ const Section2 = () => {
   //About - Paris
   useGSAP(() => {
     gsap.set('.about', {
-      x: -300,
-      y: -200,
+      xPercent: -200,
+      yPercent: -100,
     });
     gsap.to('.about', {
-      x: 0,
-      y: 0,
+      xPercent: 0,
+      yPercent: 0,
       scrollTrigger: {
         start: 'top+=400',
         end: 'top+=600',
         scrub: true,
       },
     });
-    gsap.set('.paris', {x: -300});
+    gsap.set('.paris', {xPercent: -300});
     gsap.to('.paris', {
-      x: 0,
+      xPercent: 0,
       scrollTrigger: {start: 'top+=500', end: 'top+=700', scrub: true},
     });
   });
@@ -35,15 +35,15 @@ const Section2 = () => {
       '.profil',
       {
         yPercent: 100,
-        scale: 1.2,
+        scale: 1.4,
       },
       {
         yPercent: 0,
-        scale: 1.0,
+        scale: 1.2,
         duration: 1,
         ease: 'power1.out',
         scrollTrigger: {
-          trigger: '.profil',
+          trigger: '.profilTrigger',
           start: 'top-=500',
           toggleActions: 'play pause resume reverse',
         },
@@ -80,27 +80,27 @@ const Section2 = () => {
 
   return (
     <div className="relative flex justify-center items-center h-screen">
-      <div className="flex justify-between h-5/6 w-11/12">
-        <div>
+      <div className="flex h-5/6 w-11/12 max-sm:flex-col max-sm:items-center">
+        <div className="flex flex-col min-w-fit max-sm:items-center">
           <h2 className="about playfair text-6xl select-none">About.</h2>
           <h3 className="paris text-xl">Based in France, PARIS.</h3>
         </div>
-        <div className="flex items-center">
-          <div className="flex flex-col items-end max-w-xl text-right m-10 overflow-hidden">
-            <p className="textProfil text-3xl">
+        <div className="flex items-center max-sm:flex-col">
+          <div className="flex flex-col items-end max-w-xl text-right m-10 overflow-hidden max-sm:text-center max-sm:m-2 max-sm:items-center">
+            <p className="textProfil text-xl sm:text-3xl">
               EX-MILITARY, AS FREELANCER, I AM A DEVELOPER WHO IS PASSIONATE
               ABOUT CRAFTING ELEGANT, MODERN WEBSITES AND APPLICATIONS WITH A
               STRONG EMPHASIS ON PRECISION.
             </p>
-            <p className="textProfilTwo text-sm max-w-sm">
+            <p className="textProfilTwo text-xs max-w-sm sm:text-sm">
               MY UNCONVENTIONAL BACKGROUND HAS TAUGHT ME THE IMPORTANCE OF
               ATTENTION TO DETAIL, PERSEVERANCE, AND PROBLEM-SOLVING. I AM
               PASSIONATE ABOUT THE ART OF BRINGING IDEAS TO LIFE THROUGH CODE,
               USING TECHNOLOGIES SUCH AS JAVASCRIPT, REACT, TAILWIND, AND GSAP.
             </p>
           </div>
-          <div className="w-[25rem] h-[32rem] overflow-hidden">
-            <img src={pp} alt="pp" className="profil overflow-hidden" />
+          <div className="profilTrigger w-96 overflow-hidden max-sm:w-40">
+            <img src={pp} alt="pp" className="profil" />
           </div>
         </div>
       </div>

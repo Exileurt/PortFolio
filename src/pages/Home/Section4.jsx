@@ -40,7 +40,7 @@ const Section4 = () => {
         <h2 className="skill absolute top-0 left-0 playfair text-6xl select-none">
           Skills.
         </h2>
-        <div className="skills flex max-w-[30rem] flex-wrap">
+        <div className="skills flex max-w-[30rem] flex-wrap max-sm:justify-center">
           <div className="mx-10 select-none">
             <h4 className="text-xl font-extrabold flex">
               <img src={screen} alt="screen" className="mr-4" />
