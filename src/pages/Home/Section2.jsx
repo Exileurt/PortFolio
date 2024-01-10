@@ -44,7 +44,7 @@ const Section2 = () => {
         ease: 'power1.out',
         scrollTrigger: {
           trigger: '.profilTrigger',
-          start: 'top-=500',
+          start: 'top-=700',
           toggleActions: 'play pause resume reverse',
         },
       }
@@ -80,7 +80,7 @@ const Section2 = () => {
 
   return (
     <div className="relative flex justify-center items-center h-screen">
-      <div className="flex h-5/6 w-11/12 max-sm:flex-col max-sm:items-center">
+      <div className="flex justify-between  h-5/6 w-11/12 max-sm:flex-col max-sm:items-center overflow-hidden">
         <div className="flex flex-col min-w-fit max-sm:items-center">
           <h2 className="about playfair text-6xl select-none">About.</h2>
           <h3 className="paris text-xl">Based in France, PARIS.</h3>
@@ -99,7 +99,7 @@ const Section2 = () => {
               USING TECHNOLOGIES SUCH AS JAVASCRIPT, REACT, TAILWIND, AND GSAP.
             </p>
           </div>
-          <div className="profilTrigger w-96 overflow-hidden max-sm:w-40">
+          <div className="hidden profilTrigger w-96 overflow-hidden max-sm:w-40 sm:min-w-[18rem] md:block">
             <img src={pp} alt="pp" className="profil" />
           </div>
         </div>

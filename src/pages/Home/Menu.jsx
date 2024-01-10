@@ -65,7 +65,7 @@ const Menu = () => {
   return (
     <div className="relative">
       <button
-        className="absolute p-10 flex items-center z-40 sm:right-10 sm:top-10"
+        className="p-10 flex items-center z-40"
         onClick={handleMenuToggle}
         onMouseEnter={onEnterCursor}
         onMouseLeave={onLeaveCursor}
@@ -106,7 +106,7 @@ const Menu = () => {
           id="menu"
           className="fixed flex justify-center items-center h-screen w-full backdrop-blur-md left-0 top-0 z-40"
         >
-          <nav className="relative flex text-white text-9xl font-semibold select-none max-sm:text-7xl">
+          <nav className="relative flex text-white text-9xl font-semibold select-none max-md:text-7xl">
             <button
               onMouseEnter={onEnterCursor}
               onMouseLeave={onLeaveCursor}
@@ -116,10 +116,10 @@ const Menu = () => {
                 id="cross"
                 src={cross}
                 alt="cross"
-                className="w-8 absolute -left-14 top-4 hover:scale-110 max-sm:-top-12 max-sm:left-0"
+                className="w-8 absolute -left-14 top-4 hover:scale-110 max-md:-top-12 max-md:left-0"
               />
             </button>
-            <ul className="-space-y-5 max-sm:-space-y-2">
+            <ul className="-space-y-5 max-md:-space-y-2">
               <li id="link" onMouseEnter={onEnter} onMouseLeave={onLeave}>
                 <a
                   href="#section2"

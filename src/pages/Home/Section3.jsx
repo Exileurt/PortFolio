@@ -158,7 +158,7 @@ const Section3 = () => {
         </div>
 
         {linkOneIsOpen && (
-          <div className="relative w-1/2 h-4/6 rounded-md overflow-hidden z-10 max-sm:absolute max-sm:w-full max-sm:bg-black/80 max-sm:border">
+          <div className="relative w-1/2 h-4/6 rounded-md overflow-hidden z-10 max-md:absolute max-md:w-full max-md:bg-black/80 max-md:border">
             <div className="websiteOne flex flex-col items-center w-full h-full bg-black/10 p-5 rounded-md">
               <button>
                 <img
@@ -187,9 +187,9 @@ const Section3 = () => {
                 />
               </div>
 
-              <div className="flex mt-2 items-center justify-between w-3/4">
+              <div className="flex mt-2 items-center justify-between w-3/4 max-lg:flex-col max-lg:space-y-6">
                 <div className="mx-6 select-none overflow-hidden">
-                  <h4 className="functionnality text-lg font-extraboldflex max-sm:text-base">
+                  <h4 className="functionnality text-lg font-extraboldflex max-md:text-base">
                     FUNCTIONNALITY
                   </h4>
                   <ul className="functionnalityList text-sm  max-sm:text-xs">

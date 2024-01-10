@@ -1,4 +1,3 @@
-import Menu from './Menu';
 import Section1 from '../Home/Section1';
 import Section2 from '../Home/Section2';
 import Section3 from '../Home/Section3';
@@ -35,8 +34,6 @@ const Home = () => {
           className="absolute -bottom-[170rem] right-0"
         />
       </span>
-
-      <Menu />
       <div id="section1">
         <Section1 />
       </div>
