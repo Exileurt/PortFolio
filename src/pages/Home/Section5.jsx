@@ -1,15 +1,18 @@
+import {useContext} from 'react';
+import {CursorContext} from '../../components/Cursor/cursor';
 import gradiant5 from '../../assets/gradient/gradient5.png';
 import linkedin from '../../assets/linkedin.svg';
 import insta from '../../assets/insta.svg';
 import mail from '../../assets/mail.svg';
 
 const Section5 = () => {
+  const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
   const scrollToTop = () => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   return (
-    <div className="relative flex justify-center items-center h-[70vh] overflow-hidden">
+    <div className="relative flex justify-center items-center h-[70vh] overflow-hidden border">
       <div className="relative flex justify-center items-center h-5/6 w-11/12 z-10">
         <div className="flex justify-center items-center flex-col select-none">
           CONTACT
@@ -19,6 +22,8 @@ const Section5 = () => {
               rel="noreferrer"
               target="_blank"
               className="hover:scale-105"
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
             >
               <img src={linkedin} alt="linkedin" />
             </a>
@@ -27,6 +32,8 @@ const Section5 = () => {
               rel="noreferrer"
               target="_blank"
               className="hover:scale-105"
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
             >
               <img src={insta} alt="insta" />
             </a>
@@ -34,6 +41,8 @@ const Section5 = () => {
               href='href="mailto:email@example.com"'
               rel="noreferrer"
               target="_blank"
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
             >
               <img src={mail} alt="mail" />
             </a>
@@ -43,10 +52,17 @@ const Section5 = () => {
           <a
             href="https://github.com/Exileurt/PortFolio"
             className="hover:scale-105"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
           >
             <h5>GITHUB LINK</h5>
           </a>
-          <button onClick={scrollToTop} className="hover:scale-105">
+          <button
+            onClick={scrollToTop}
+            className="hover:scale-105"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+          >
             <h5>TOP PAGE</h5>
           </button>
           <a
@@ -54,6 +70,8 @@ const Section5 = () => {
             rel="noreferrer"
             target="_blank"
             className="hover:scale-105"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
           >
             <h5>FIGMA PROJECT</h5>
           </a>
@@ -63,7 +81,7 @@ const Section5 = () => {
       <img
         src={gradiant5}
         alt="gradiant5"
-        className="absolute -bottom-36 right-0 -z-0"
+        className="absolute -bottom-36 right-0 border"
       />
     </div>
   );
