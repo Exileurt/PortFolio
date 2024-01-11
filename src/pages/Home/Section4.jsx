@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import {CursorContext} from '../../components/Cursor/cursor';
 import gsap from 'gsap';
 import {useGSAP} from '@gsap/react';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
@@ -8,6 +10,7 @@ import paint from '../../assets/paint.svg';
 import community from '../../assets/community.svg';
 
 const Section4 = () => {
+  const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
   //Skill
   useGSAP(() => {
     gsap.set('.skill', {xPercent: -200});
@@ -30,17 +33,25 @@ const Section4 = () => {
       scrollTrigger: {
         trigger: '.skills',
         toggleActions: 'play pause resume reverse',
-        start: 'top-=600',
+        start: 'top-=800',
       },
     });
   });
   return (
     <div className="relative flex justify-center items-center h-screen">
       <div className="relative flex justify-center items-center h-5/6 w-11/12">
-        <h2 className="skill absolute top-0 left-0 playfair text-6xl select-none">
+        <h2
+          className="skill absolute top-0 left-0 playfair text-6xl select-none"
+          onMouseEnter={onEnterCursor}
+          onMouseLeave={onLeaveCursor}
+        >
           Skills.
         </h2>
-        <div className="skills flex max-w-[30rem] flex-wrap max-sm:justify-center">
+        <div
+          className="skills flex max-w-[30rem] flex-wrap max-sm:justify-center"
+          onMouseEnter={onEnterCursor}
+          onMouseLeave={onLeaveCursor}
+        >
           <div className="mx-10 select-none">
             <h4 className="text-xl font-extrabold flex">
               <img src={screen} alt="screen" className="mr-4" />

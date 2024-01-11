@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import {CursorContext} from '../../components/Cursor/cursor';
 import gsap from 'gsap';
 import {useGSAP} from '@gsap/react';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
@@ -8,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 import pp from '../../assets/pp.png';
 
 const Section2 = () => {
+  const {onEnterCursor, onLeaveCursor} = useContext(CursorContext);
   //About - Paris
   useGSAP(() => {
     gsap.set('.about', {
@@ -82,17 +85,37 @@ const Section2 = () => {
     <div className="relative flex justify-center items-center h-screen">
       <div className="flex justify-between  h-5/6 w-11/12 max-sm:flex-col max-sm:items-center overflow-hidden">
         <div className="flex flex-col min-w-fit max-sm:items-center">
-          <h2 className="about playfair text-6xl select-none">About.</h2>
-          <h3 className="paris text-xl">Based in France, PARIS.</h3>
+          <h2
+            className="about playfair text-6xl select-none"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+          >
+            About.
+          </h2>
+          <h3
+            className="paris text-xl"
+            onMouseEnter={onEnterCursor}
+            onMouseLeave={onLeaveCursor}
+          >
+            Based in France, PARIS.
+          </h3>
         </div>
         <div className="flex items-center max-sm:flex-col">
           <div className="flex flex-col items-end max-w-xl text-right m-10 overflow-hidden max-sm:text-center max-sm:m-2 max-sm:items-center">
-            <p className="textProfil text-xl sm:text-3xl">
+            <p
+              className="textProfil text-xl sm:text-3xl"
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
+            >
               EX-MILITARY, AS FREELANCER, I AM A DEVELOPER WHO IS PASSIONATE
               ABOUT CRAFTING ELEGANT, MODERN WEBSITES AND APPLICATIONS WITH A
               STRONG EMPHASIS ON PRECISION.
             </p>
-            <p className="textProfilTwo text-xs max-w-sm sm:text-sm">
+            <p
+              className="textProfilTwo text-xs max-w-sm sm:text-sm"
+              onMouseEnter={onEnterCursor}
+              onMouseLeave={onLeaveCursor}
+            >
               MY UNCONVENTIONAL BACKGROUND HAS TAUGHT ME THE IMPORTANCE OF
               ATTENTION TO DETAIL, PERSEVERANCE, AND PROBLEM-SOLVING. I AM
               PASSIONATE ABOUT THE ART OF BRINGING IDEAS TO LIFE THROUGH CODE,

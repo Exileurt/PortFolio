@@ -29,11 +29,11 @@ const CursorProvider = ({children}) => {
   useLayoutEffect(() => {
     gsap.set(cursorOut.current, {xPercent: -50, yPercent: -50});
     let xTo = gsap.quickTo(cursorOut.current, 'x', {
-      duration: 1.5,
+      duration: 0.9,
       ease: 'back.out(1.7)',
     });
     let yTo = gsap.quickTo(cursorOut.current, 'y', {
-      duration: 1.5,
+      duration: 0.9,
       ease: 'back.out(1.7)',
     });
     window.addEventListener('mousemove', e => {
@@ -44,11 +44,17 @@ const CursorProvider = ({children}) => {
 
   const onEnterCursor = () => {
     gsap.to(cursorOut.current, {
-      scale: 2,
+      scale: 3,
+      backgroundColor: 'white',
+      borderColor: 'transparent',
     });
   };
   const onLeaveCursor = () => {
-    gsap.to(cursorOut.current, {scale: 1});
+    gsap.to(cursorOut.current, {
+      scale: 1,
+      backgroundColor: 'transparent',
+      borderColor: 'white',
+    });
   };
 
   return (
@@ -59,7 +65,7 @@ const CursorProvider = ({children}) => {
       <div>
         <div
           ref={cursorOut}
-          className="fixed w-7 h-7 top-0 left-0 bg-white/20 rounded-full z-50 pointer-events-none"
+          className="fixed w-7 h-7 top-0 left-0 border border-white rounded-full pointer-events-none mix-blend-difference"
         />
       </div>
     </CursorContext.Provider>

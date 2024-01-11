@@ -12,7 +12,11 @@ const Section1 = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="relative flex justify-center items-center h-5/6 w-11/12 rounded-xl md:bg-black/10">
-        <p className="hidden absolute top-6 left-6 select-none md:block">
+        <p
+          className="hidden absolute top-6 left-6 select-none md:block"
+          onMouseEnter={onEnterCursor}
+          onMouseLeave={onLeaveCursor}
+        >
           Site designed by me.
         </p>
         <div className="absolute top-0 right-0 max-md:left-0">
@@ -66,7 +70,11 @@ const Section1 = () => {
             <img src={insta} alt="insta" />
           </a>
         </div>
-        <div className="absolute flex items-end select-none bottom-6 sm:right-6">
+        <div
+          className="absolute flex items-end select-none bottom-6 sm:right-6"
+          onMouseEnter={onEnterCursor}
+          onMouseLeave={onLeaveCursor}
+        >
           <span className="pr-6 leading-3">Scroll down</span>
           <img src={arrow} alt="arrow" className="hidden sm:block" />
         </div>
