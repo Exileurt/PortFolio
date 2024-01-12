@@ -29,7 +29,7 @@ const Section2 = () => {
     gsap.set('.paris', {xPercent: -300});
     gsap.to('.paris', {
       xPercent: 0,
-      scrollTrigger: {start: 'top+=500', end: 'top+=700', scrub: true},
+      scrollTrigger: {start: 'top+=450', end: 'top+=550', scrub: true},
     });
   });
   //Profil
