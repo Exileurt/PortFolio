@@ -1,6 +1,5 @@
 import {useContext} from 'react';
 import {CursorContext} from '../../components/Cursor/cursor';
-import gradiant5 from '../../assets/gradient/gradient5.png';
 import linkedin from '../../assets/linkedin.svg';
 import insta from '../../assets/insta.svg';
 import mail from '../../assets/mail.svg';
@@ -12,9 +11,13 @@ const Section5 = () => {
   };
 
   return (
-    <div className="relative flex justify-center items-center h-[70vh] overflow-hidden border">
-      <div className="relative flex justify-center items-center h-5/6 w-11/12 z-10">
-        <div className="flex justify-center items-center flex-col select-none">
+    <div className="relative flex justify-center items-center h-[70vh] overflow-hidden">
+      <div className="relative flex justify-center items-center h-5/6 w-11/12">
+        <div
+          className="flex justify-center items-center flex-col select-none"
+          onMouseEnter={onEnterCursor}
+          onMouseLeave={onLeaveCursor}
+        >
           CONTACT
           <div className="flex justify-center items-center space-x-4">
             <a
@@ -77,12 +80,6 @@ const Section5 = () => {
           </a>
         </div>
       </div>
-
-      <img
-        src={gradiant5}
-        alt="gradiant5"
-        className="absolute -bottom-36 right-0 border"
-      />
     </div>
   );
 };

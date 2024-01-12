@@ -31,7 +31,7 @@ const Home = () => {
         <img
           src={gradiant4}
           alt="gradiant4"
-          className="absolute -bottom-[170rem] right-0"
+          className="absolute -bottom-[170rem] right-0 max-sm:-bottom-[140rem]"
         />
       </span>
       <div id="section1">
